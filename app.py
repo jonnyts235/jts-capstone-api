@@ -18,6 +18,7 @@ class Review(db.Model):
   __tablename__ = "reviews"
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(100))
+  movie = db.Column(db.String(100))
   rating = db.Column(db.Integer)
   comment = db.Column(db.String(200))
 
@@ -28,7 +29,7 @@ class Review(db.Model):
 
 class ReviewSchema(ma.Schema):
   class Meta:
-    fields = ("id", "name", "rating", "comment")
+    fields = ("id", "name", "movie", "rating", "comment")
 review_schema = ReviewSchema()
 reviews_schema = ReviewSchema(many=True)
 
@@ -43,6 +44,7 @@ def get_accounts():
 @app.route("/review", methods=["POST"])
 def add_account():
   name = request.json["name"]
+  movie = request.json["movie"]
   rating = request.json["rating"]
   comment = request.json["comment"]
   new_review = Review(name, rating, comment)
@@ -58,6 +60,7 @@ def add_account():
 def update_review(id):
   review = Review.query.get(id)
   review.name = request.json["name"]
+  review.movie = request.json["movie"]
   review.rating = request.json["rating"]
   review.comment = request.json["comment"]
   db.session.commit()
