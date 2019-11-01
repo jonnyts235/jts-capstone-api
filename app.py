@@ -48,7 +48,7 @@ def add_account():
   movie = request.json["movie"]
   rating = request.json["rating"]
   comment = request.json["comment"]
-  new_review = Review(name, rating, comment)
+  new_review = Review(name, movie, rating, comment)
 
   db.session.add(new_review)
   db.session.commit()
