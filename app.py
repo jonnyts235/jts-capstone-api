@@ -65,7 +65,7 @@ def update_review(id):
   review.rating = request.json["rating"]
   review.comment = request.json["comment"]
   db.session.commit()
-  return account_schema.jsonify(account)
+  return account_schema.jsonify(review)
 
 @app.route("/review/<id>", methods=["DELETE"])
 def delete_review(id):
