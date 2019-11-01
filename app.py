@@ -22,8 +22,9 @@ class Review(db.Model):
   rating = db.Column(db.Integer)
   comment = db.Column(db.String(200))
 
-  def __init__(self, name, rating, comment):
+  def __init__(self, name, movie, rating, comment):
     self.name = name
+    self.movie = movie
     self.rating = rating
     self.comment = comment
 
