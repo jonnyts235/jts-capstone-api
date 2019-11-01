@@ -13,7 +13,7 @@ CORS(app)
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-review
+
 class Review(db.Model):
   __tablename__ = "reviews"
   id = db.Column(db.Integer, primary_key=True)
